@@ -19,10 +19,9 @@ You may also opt to do **Install Git with Atlassian Sourcetree**.
 
 ##### Mac OSX
 
-* Install [brew](https://brew.sh/)
 * Install [iTerm2](https://www.iterm2.com/)
-* Open iTerm2 upon installation and run the following command:
-
+* Open iTerm2 and follow instructions to install [brew](https://brew.sh/)
+* Upon installing brew, run the following command:
 ```
 $> brew install git
 ```
@@ -37,7 +36,7 @@ You may opt to download other text editor / development IDE. This one is just a 
 
 #### Postman
 
-Postman is a REST API client. This tool is very useful for testing REST APIs that you will develop. For one, it stores all your HTTP Requests. For a brief discussion on HTTP and REST APIs, you may read this [article](https://enterprise-confluence.asurion.com/display/TS/Understanding+HTTP).
+Postman is an HTTP client for conducting HTTP requests. This tool is very useful for testing HTTP requests that you will develop. For one, it stores all your HTTP requests. For a brief discussion on HTTP and REST APIs, you may read this [article](https://enterprise-confluence.asurion.com/display/TS/Understanding+HTTP).
 
 Download Postman [here](https://www.getpostman.com/downloads/).
 
@@ -46,12 +45,13 @@ Download Postman [here](https://www.getpostman.com/downloads/).
 
 * Download, or in `git` jargon, **clone** this repo via the command:
 ```
-$> git clone 
+$> git clone ssh://git@enterprise-bitbucket.asurion.com:7999/pmnldo/development-starter-pack.git
 ```
+NOTE: **Cloning via SSH is not default.** You may opt to clone via HTTPs for the meantime but moving forward, setup your SSH keys in your Bitbucket account to use SSH protocol.
 
-* Open your preferred text editor and open the directory previously downloaded / cloned.
+* Open your preferred text editor and open the directory previously downloaded/cloned.
 
-* Also open a command prompt / terminal (iTerm2 for Mac). Navigate to the location of the downloaded directory, or in `git` jargon, **repository**. From there, install the Python requirements via the command:
+* Also open a command prompt/terminal (iTerm2 for Mac). Navigate to the location of the downloaded directory, or in `git` jargon, **repository**. From there, install the Python requirements via the command:
 ```
 $> pip install -r requirements.txt
 ```
@@ -66,7 +66,7 @@ $> FLASK_APP=app.py python -m flask run
 
 #### REST APIs vs HTTP Requests
 
-REST APIs is not exactly equivalent to HTTP requests. REST APIs refer to the **design** or **structure** or **organization** of the resources that is being accessed via HTTP requests. It is a standard/practice that many conform today to better organize their resources/HTTP endpoints.
+REST APIs are not equivalent to HTTP requests. REST APIs pertain more to the **design** or **structure** or **organization** of the resources that is being accessed via HTTP requests. It is a standard/practice that many conform today to better organize their resources/HTTP endpoints.
 
 To illustrate how REST APIs can be analogous to a function...
 
@@ -91,26 +91,29 @@ To illustrate this practice further, run the script and open Postman.
 Define the following in your Postman and click send per resource to check the output:
 
 ##### GET /v1/users
-Method: **GET** 
-URL: http://localhost:3000/v1/users
+* Method: **GET** 
+* URL: http://localhost:3000/v1/users
 
 ##### POST /v1/users
-Method: **GET** 
-URL: http://localhost:3000/v1/users
-Headers: application/json
-Body (raw):
+* Method: **GET** 
+* URL: http://localhost:3000/v1/users
+* Headers: application/json
+* Body (raw):
+```
 {
   "data": {
     "name": "Some Name",
     "age": 20
   }
 }
+```
 
 NOTE: Try running **GET** again after **POST**.
 ##### GET /v1/users/1
-Method: **GET** 
-URL: http://localhost:3000/v1/users/1
+* Method: **GET** 
+* URL: http://localhost:3000/v1/users/1
 
+Try playing around **GET**'s and **POST**'s or the whole source code itself to see how every part works.
 
 ## Exercises
 
@@ -121,22 +124,25 @@ $> git checkout -b <provide any name here that will identify your `branch` in th
 
 This will ensure that all changes you do won't affect the **master** branch of the repository.
 
+If an error is encountered, probably because you made changes prior to this, just execute `git checkout -f`. But do take note that doing this will remove all your changes prior. To save your changes, just ask me or search for `git stash`.
+
 #### Add DELETE and PUT method.
 
 As you may notice, a RESTful webservice conforms to CRUD functionality popular with databases.
-
+```
 (C)reate          = POST
 (R)ead/(R)etrieve = GET
 (U)pdate          = PUT
 (D)elete          = DELETE
+```
 
-Try implementing PUT and DELETE functionality which will perform editing of user details and removing user details respectively.
+Try implementing **PUT** and **DELETE** functionality which will perform editing of user details and removing user details respectively.
 
-NOTE: You may opt to add proper error handling for unexpected cases like performing DELETE but id is not provided. However the main goal only covers the implementation of ideal cases. :)
+NOTE: You may opt to add proper error handling for unexpected cases like performing **DELETE** but id is not provided. However the main goal only covers the implementation of ideal cases. :)
 
 #### New Route
 
-Implement a new route, anything that you can think of, that will have the CRUD functionalities. Copy-pasting (users) is not illegal :P but ensure that you understand each stuff that you copy-paste. :)
+Implement a new route, anything that you can think of (say `/books`, `/dogs`, etc), that will have the **CRUD** functionalities. Copy-pasting (from users) is not illegal :P but ensure that you understand each stuff that you copy-paste. :) Play around your code and try to elaborate its functionality more (adding more error handling, adding more logic, etc).
 
 
 ## References
